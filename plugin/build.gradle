@@ -87,9 +87,9 @@ publishing {
             from components.java
 
             pom {
-                name = "Grace Unpoly Plugin"
-                description = "Grace Plugin for using Grace with Unpoly."
-                url = 'https://github.com/grace-plugins/grace-unpoly'
+                name = "Grace Turbo Plugin"
+                description = "Grace Plugin for using Grace with Turbo."
+                url = 'https://github.com/grace-plugins/grace-turbo'
                 licenses {
                     license {
                         name = 'The Apache License, Version 2.0'
@@ -104,9 +104,9 @@ publishing {
                     }
                 }
                 scm {
-                    connection = 'scm:git:git://github.com/grace-plugins/grace-unpoly.git'
-                    developerConnection = 'scm:git:ssh://github.com:grace-plugins/grace-unpoly.git'
-                    url = 'https://github.com/grace-plugins/grace-unpoly'
+                    connection = 'scm:git:git://github.com/grace-plugins/grace-turbo.git'
+                    developerConnection = 'scm:git:ssh://github.com:grace-plugins/grace-turbo.git'
+                    url = 'https://github.com/grace-plugins/grace-turbo'
                 }
             }
         }
