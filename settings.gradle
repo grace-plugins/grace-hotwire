@@ -1,3 +1,4 @@
 rootProject.name = 'grace-hotwire'
 
+include 'plugins:stimulus'
 include 'plugins:turbo'

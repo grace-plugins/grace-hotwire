@@ -1,0 +1,3 @@
+<plugin name='stimulus'>
+  <type>org.graceframework.plugins.stimulus.StimulusGrailsPlugin</type>
+</plugin>
