@@ -84,6 +84,7 @@ dependencies {
 
 java {
     sourceCompatibility = '11'
+    targetCompatibility = '11'
 }
 
 bootRun {
