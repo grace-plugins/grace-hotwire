@@ -1,0 +1,3 @@
+<plugin name='turbo'>
+  <type>org.graceframework.plugins.turbo.TurboGrailsPlugin</type>
+</plugin>

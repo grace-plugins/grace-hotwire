@@ -1,1 +1,3 @@
-rootProject.name = 'turbo'
+rootProject.name = 'grace-turbo'
+
+include 'plugin'
