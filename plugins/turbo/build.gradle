@@ -88,7 +88,7 @@ publishing {
 
             pom {
                 name = "Grace Turbo Plugin"
-                description = "Grace Plugin for using Grace with Turbo."
+                description = "Grace Plugin for using Turbo with Grace."
                 url = 'https://github.com/grace-plugins/grace-turbo'
                 licenses {
                     license {
