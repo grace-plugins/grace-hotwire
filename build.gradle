@@ -13,7 +13,7 @@ buildscript {
 }
 
 group "grace.demos"
-version "0.0.1-SNAPSHOT"
+version projectVersion
 
 apply plugin: "eclipse"
 apply plugin: "idea"
