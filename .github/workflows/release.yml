@@ -70,4 +70,4 @@ jobs:
           SIGNING_PASSPHRASE: ${{ secrets.SIGNING_PASSPHRASE }}
           SECRING_FILE: ${{ secrets.SECRING_FILE }}
         with:
-          arguments: -Psigning.secretKeyRingFile=${{ github.workspace }}/secring.gpg :plugins:stimulus:jar :plugins:stimulus:javadocJar :plugins:stimulus:sourcesJar :plugins:stimulus:publishToSonatype :plugins:turbo:jar :plugins:turbo:javadocJar :plugins:turbo:sourcesJar :plugins:turbo:publishToSonatype closeAndReleaseSonatypeStagingRepository
+          arguments: -Psigning.secretKeyRingFile=${{ github.workspace }}/secring.gpg :plugins:stimulus:publishToSonatype :plugins:turbo:publishToSonatype closeAndReleaseSonatypeStagingRepository
