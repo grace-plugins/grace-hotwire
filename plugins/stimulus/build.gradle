@@ -2,6 +2,9 @@ buildscript {
     repositories {
         mavenCentral()
     }
+    dependencies {
+        classpath "com.bertramlabs.plugins:asset-pipeline-gradle:3.4.7"
+    }
 }
 
 ext."signing.keyId" = project.hasProperty("signing.keyId") ? project.getProperty('signing.keyId') : System.getenv('SIGNING_KEY')
@@ -67,7 +70,6 @@ jar {
     enabled = true
     archiveClassifier.set('')
     includeEmptyDirs = false
-    exclude 'assets/turbo*'
 }
 
 assets {
