@@ -81,6 +81,7 @@ assets {
         targetLanguage: 'ES5',
         optimizationLevel: 'SIMPLE'
     ]
+    includes = ['**/stimulus*.js']
 }
 
 publishing {
