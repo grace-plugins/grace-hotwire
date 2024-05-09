@@ -1,0 +1,3 @@
+moduleName=grace-turbo-module
+moduleVersion=1.0
+extensionClasses=org.graceframework.plugins.turbo.HttpServletRequestExtension,org.graceframework.plugins.turbo.HttpServletResponseExtension
