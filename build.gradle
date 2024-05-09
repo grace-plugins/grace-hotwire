@@ -32,6 +32,13 @@ configurations {
     developmentOnly
 }
 
+grails {
+    plugins {
+        implementation project(":plugins:stimulus")
+        implementation project(":plugins:turbo")
+    }
+}
+
 dependencies {
     developmentOnly('org.springframework.boot:spring-boot-devtools')
     compileOnly "io.micronaut:micronaut-inject-groovy"
