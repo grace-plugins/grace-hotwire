@@ -20,7 +20,8 @@ group "org.graceframework.plugins"
 apply plugin: "eclipse"
 apply plugin: "idea"
 apply plugin: "groovy"
-apply plugin: "asset-pipeline"
+apply plugin: "org.graceframework.asset-pipeline"
+apply plugin: "org.graceframework.grace-plugin"
 apply plugin: "maven-publish"
 apply plugin: "signing"
 
@@ -78,7 +79,6 @@ assets {
         targetLanguage: 'ES5',
         optimizationLevel: 'SIMPLE'
     ]
-    includes = ['**/stimulus*.js']
 }
 
 publishing {
