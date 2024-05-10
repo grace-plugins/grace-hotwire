@@ -36,7 +36,7 @@ Use Turbo in your Grace app.
     def profiles = ['web']
 
     // URL to the plugin's documentation
-    def documentation = "https://github.com/grace-plugins/grace-stimulus"
+    def documentation = "https://github.com/grace-plugins/grace-hotwire"
 
     // Extra (optional) plugin metadata
 
@@ -50,9 +50,9 @@ Use Turbo in your Grace app.
     def developers = [ [ name: "Michael Yan", email: "rain@rainboyan.com" ]]
 
     // Location of the plugin's issue tracker.
-    def issueManagement = [ system: "GitHub", url: "https://github.com/grace-plugins/grace-stimulus/issues" ]
+    def issueManagement = [ system: "GitHub", url: "https://github.com/grace-plugins/grace-hotwire/issues" ]
 
     // Online location of the plugin's browseable source code.
-    def scm = [ url: "https://github.com/grace-plugins/grace-stimulus.git" ]
+    def scm = [ url: "https://github.com/grace-plugins/grace-hotwire.git" ]
 
 }
