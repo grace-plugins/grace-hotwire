@@ -19,7 +19,7 @@ import grails.plugins.*
 
 class TurboGrailsPlugin extends Plugin {
 
-    def version = '0.2.0-SNAPSHOT'
+    def version = '0.3.0-SNAPSHOT'
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.0.0 > *"
     // resources that are excluded from plugin packaging
