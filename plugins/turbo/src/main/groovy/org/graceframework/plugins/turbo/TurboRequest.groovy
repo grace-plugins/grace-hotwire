@@ -31,11 +31,19 @@ import grails.web.http.HttpHeaders
 class TurboRequest {
 
     public static final String TURBO_FRAME = 'Turbo-Frame'
+    public static final String TURBO_REQUEST_ID = 'X-Turbo-Request-Id'
 
     private final HttpServletRequest request
 
     TurboRequest(HttpServletRequest request) {
         this.request = request
+    }
+
+    /**
+     * The ID of current Turbo request.
+     */
+    String getTurboRequestId() {
+        getHeaderValue(TURBO_REQUEST_ID)
     }
 
     /**
@@ -55,16 +63,29 @@ class TurboRequest {
         this.request.getHeader(name)
     }
 
+    /**
+     * Check current request whether have the header <tt>X-Turbo-Request-Id</tt>
+     */
+    boolean isTurboRequest() {
+        getTurboRequestId()
+    }
+
+    /**
+     * Check current request whether have the header <tt>Turbo-Frame</tt>
+     */
     boolean isTurboFrame() {
         getTurboFrameId()
     }
 
+    /**
+     * Check current request whether from Turbo Stream
+     */
     boolean isTurboStream() {
         getHeaderValue(HttpHeaders.ACCEPT) == TurboMimeType.TURBO_STREAM.name
     }
 
     boolean asBoolean() {
-        getTurboFrameId()
+        getTurboRequestId()
     }
 
 }

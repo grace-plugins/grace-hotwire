@@ -32,6 +32,18 @@ class HttpServletRequestExtension {
         new TurboRequest(request)
     }
 
+    static String getTurboRequestId(HttpServletRequest request) {
+        getTurbo(request).getHeaderValue(TurboRequest.TURBO_REQUEST_ID)
+    }
+
+    static String getTurboFrameId(HttpServletRequest request) {
+        getTurbo(request).getHeaderValue(TurboRequest.TURBO_FRAME)
+    }
+
+    static boolean isTurboRequest(HttpServletRequest request) {
+        getTurbo(request).isTurboRequest()
+    }
+
     static boolean isTurboFrame(HttpServletRequest request) {
         getTurbo(request).isTurboFrame()
     }
