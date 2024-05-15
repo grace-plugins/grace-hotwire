@@ -14,8 +14,136 @@
 This plugin will help you to develop Grace app with Hotwire Turo and Stimulus.
 
 
+## Usage
+
+Add dependency to the `build.gradle`,
+
+```gradle
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.graceframework.plugins:stimulus:VERSION"
+    implementation "org.graceframework.plugins:turbo:VERSION"
+}
+```
+
+Turbo plugin supports controller-specific `withFormat()` method,
+
+```groovy
+class BookController {
+
+    def list() {
+        def books = Book.list()
+
+        withFormat {
+            turbo_stream {
+                render(template: "book", model: [bookList: books])
+            }
+            json {
+                render books as JSON
+            }
+        }
+    }
+}
+```
+
+Also, this plugin supports extendsions for Grails Request and Response,
+
+```groovy
+// You can get Turbo request headers from Grails Request
+
+request.turboFrameId == request.getHeader('Turbo-Frame')
+request.turboRequestId  == request.getHeader('X-Turbo-Request-ID')
+
+// Check if Turbo Request?
+if (request.isTurboRequest()) {
+    template = 'book-detail'
+}
+
+// Check if Turbo Frame?
+if (request.isTurboFrame()) {
+    template = 'book-detail'
+}
+
+// Check if Turbo Stream?
+if (request.isTurboStream()) {
+    template = 'book-detail'
+}
+```
+
+If you use [`respond`](https://grails.github.io/legacy-grails-doc/4.0.0/ref/Controllers/respond.html) method introduced in Grails 2.3. The respond method tries to produce the most appropriate response for the requested content type (JSON, XML, HTML etc.)
+
+This plugin already provides [Mime Types](https://grails.github.io/legacy-grails-doc/4.0.0/guide/theWebLayer.html#contentNegotiation) for Turbo Stream.
+
+For example given the show action:
+
+```groovy
+def show(Book book) {
+    respond book
+}
+```
+
+You could supply a `show.turbo_stream.gsp` file to render the Turbo Stream:
+
+```html
+<turbo-stream action="append" target="books">
+  <template>
+    ...
+  </template>
+</turbo-stream>
+```
+
+If you use `asset-pipeline` plugin, this plugin already includes `stimulus.js`, `turbo.js`,
+so you can add `stimulus.js` to the `app/assets/application.js`,
+
+```javascript
+//= require stimulus
+//= require turbo
+//= require_self
+```
+
+Also, you can use `asset` tag in the GSP,
+
+```HTML
+<asset:javascript src="stimulus.js"/>
+<asset:javascript src="turbo.js"/>
+```
+
+## Development
+
+### Build from source
+
+```
+git clone https://github.com/grace-plugins/grace-hotwire.git
+cd grace-hotwire
+./gradlew publishToMavenLocal
+```
+
+## Support Version
+
+* Grace 2022.0.0+
+* Grails 3.0+
+
+## Roadmap
+
+### 1.x
+
+* Stimulus 3.2.2
+* Turbo 8.0.4
+
+## License
+
+This plugin is available as open source under the terms of the [APACHE LICENSE, VERSION 2.0](http://apache.org/Licenses/LICENSE-2.0)
+
 ## Links
 
 - [Grace Framework](https://github.com/graceframework/grace-framework)
+- [Grace Plugins](https://github.com/grace-plugins)
+- [Grace Hotwire Plugin](https://github.com/grace-plugins/grace-hotewire)
+- [Grace Stimulus Gudie](https://github.com/grace-guides/gs-stimuls)
+- [Grace Turbo Guide](https://github.com/grace-guides/gs-turbo)
 - [Hotwire Turbo](https://turbo.hotwired.dev)
 - [Hotwire Stimulus](https://stimulus.hotwired.dev)
