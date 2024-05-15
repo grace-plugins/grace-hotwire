@@ -142,8 +142,8 @@ This plugin is available as open source under the terms of the [APACHE LICENSE, 
 
 - [Grace Framework](https://github.com/graceframework/grace-framework)
 - [Grace Plugins](https://github.com/grace-plugins)
-- [Grace Hotwire Plugin](https://github.com/grace-plugins/grace-hotewire)
-- [Grace Stimulus Gudie](https://github.com/grace-guides/gs-stimuls)
+- [Grace Hotwire Plugin](https://github.com/grace-plugins/grace-hotwire)
+- [Grace Stimulus Gudie](https://github.com/grace-guides/gs-stimulus)
 - [Grace Turbo Guide](https://github.com/grace-guides/gs-turbo)
 - [Hotwire Turbo](https://turbo.hotwired.dev)
 - [Hotwire Stimulus](https://stimulus.hotwired.dev)
