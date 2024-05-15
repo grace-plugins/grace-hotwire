@@ -10,6 +10,7 @@ ext."signing.secretKeyRingFile" = project.hasProperty("signing.secretKeyRingFile
 ext.isReleaseVersion = !projectVersion.endsWith("SNAPSHOT")
 
 ext {
+    grailsVersion = '5.1.0'
     springBootVersion = '2.6.6'
     servletVersion = '4.0.1'
 }
@@ -22,6 +23,7 @@ apply plugin: "idea"
 apply plugin: "groovy"
 apply plugin: "org.graceframework.asset-pipeline"
 apply plugin: "org.graceframework.grace-plugin"
+apply plugin: "org.graceframework.grace-gsp"
 apply plugin: "maven-publish"
 apply plugin: "signing"
 
@@ -33,7 +35,9 @@ dependencies {
     compileOnly "org.springframework.boot:spring-boot-autoconfigure:$springBootVersion"
     compileOnly "javax.servlet:javax.servlet-api:$servletVersion"
     compileOnly "org.graceframework:grace-core:$graceVersion"
-    compileOnly "org.graceframework:grace-web-common:$graceVersion"
+    compileOnly "org.grails:grails-web-common:$grailsVersion"
+    compileOnly "org.grails:grails-web-gsp:$grailsVersion"
+    compileOnly "org.grails:grails-web-sitemesh:$grailsVersion"
 }
 
 tasks.withType(Sign) {

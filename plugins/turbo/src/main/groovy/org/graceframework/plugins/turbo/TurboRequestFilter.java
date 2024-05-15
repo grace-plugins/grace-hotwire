@@ -23,8 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import grails.web.http.HttpHeaders;
-import grails.web.mime.MimeType;
+import org.grails.web.sitemesh.GrailsLayoutDecoratorMapper;
 import org.grails.web.util.GrailsApplicationAttributes;
 
 /**
@@ -36,21 +35,29 @@ import org.grails.web.util.GrailsApplicationAttributes;
  */
 public class TurboRequestFilter extends OncePerRequestFilter {
 
+    private static final String TURBO_FRAME_LAYOUT = "turbo/frame";
+
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        request.setAttribute(GrailsApplicationAttributes.CONTENT_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
-        request.setAttribute(GrailsApplicationAttributes.RESPONSE_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
-        request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPE, TurboMimeType.TURBO_STREAM);
-        response.setContentType(TurboMimeType.TURBO_STREAM.getName());
+        if (HttpServletRequestExtension.isTurboStream(request)) {
+            request.setAttribute(GrailsApplicationAttributes.CONTENT_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPE, TurboMimeType.TURBO_STREAM);
+            response.setContentType(TurboMimeType.TURBO_STREAM.getName());
+        }
+
+        if (HttpServletRequestExtension.isTurboFrame(request)) {
+            request.setAttribute(GrailsLayoutDecoratorMapper.LAYOUT_ATTRIBUTE, TURBO_FRAME_LAYOUT);
+        }
 
         filterChain.doFilter(request, response);
     }
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !HttpServletRequestExtension.isTurboStream(request);
+        return !HttpServletRequestExtension.isTurboRequest(request);
     }
 
 }
