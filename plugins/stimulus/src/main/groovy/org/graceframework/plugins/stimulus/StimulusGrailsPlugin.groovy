@@ -21,7 +21,7 @@ class StimulusGrailsPlugin extends Plugin {
 
     def version = '0.4.0-SNAPSHOT'
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "3.0.0 > *"
+    def grailsVersion = "5.0.0 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
         "grails-app/views/error.gsp"
