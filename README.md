@@ -1,7 +1,9 @@
 [![Main branch build status](https://github.com/grace-plugins/grace-hotwire/workflows/Grace%20CI/badge.svg?style=flat)](https://github.com/grace-plugins/grace-hotwire/actions?query=workflow%3A%Grace+CI%22)
 [![Apache 2.0 license](https://img.shields.io/badge/License-APACHE%202.0-green.svg?logo=APACHE&style=flat)](https://opensource.org/licenses/Apache-2.0)
 [![Latest version on Maven Central](https://img.shields.io/maven-central/v/org.graceframework.plugins/turbo.svg?label=Maven%20Central&logo=apache-maven&style=flat)](https://search.maven.org/search?q=g:org.graceframework.plugins)
-[![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://twitter.com/graceframework)
+[![Groovy Version](https://img.shields.io/badge/Groovy-3.0.22-blue?style=flat&color=4298b8)](https://groovy-lang.org/releasenotes/groovy-3.0.html)
+[![Grace Version](https://img.shields.io/badge/Grace-2022.0.0-blue?style=flat&color=f49b06)](https://github.com/graceframework/grace-framework/releases/tag/v2022.0.0)
+[![Grace on X](https://img.shields.io/twitter/follow/graceframework?style=social)](https://x.com/graceframework)
 
 # Grace with Hotwire
 
@@ -11,7 +13,7 @@
 
 [Stimulus](https://stimulus.hotwired.dev) is a JavaScript framework with modest ambitions. It doesn’t seek to take over your entire front-end—in fact, it’s not concerned with rendering HTML at all. Instead, it’s designed to augment your HTML with just enough behavior to make it shine. 
 
-This plugin will help you to develop Grace app with Hotwire Turo and Stimulus.
+This plugin will help you to develop Grace app with Hotwire Turbo and Stimulus.
 
 
 ## Usage
@@ -125,7 +127,7 @@ cd grace-hotwire
 ## Support Version
 
 * Grace 2022.0.0+
-* Grails 3.0+
+* Grails 5.0+
 
 ## Roadmap
 
