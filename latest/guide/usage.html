@@ -102,8 +102,8 @@ function addJsClass() {
 }
 
 dependencies {
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins:stimulus:VERSION</span><span class="delimiter">&quot;</span></span>
-    implementation <span class="string"><span class="delimiter">&quot;</span><span class="content">org.graceframework.plugins:turbo:VERSION</span><span class="delimiter">&quot;</span></span>
+    implementation "org.graceframework.plugins:stimulus:0.5.0-SNAPSHOT"
+    implementation "org.graceframework.plugins:turbo:0.5.0-SNAPSHOT"
 }</code></pre>
 </div>
 </div>
@@ -156,10 +156,10 @@ request.turboRequestId  == request.getHeader(<span class="string"><span class="d
 </div>
 </div>
 <div class="paragraph">
-<p>If you use <a href="https://grails.github.io/legacy-grails-doc/4.0.0/ref/Controllers/respond.html"><code>respond</code></a> method introduced in Grails 2.3. The respond method tries to produce the most appropriate response for the requested content type (JSON, XML, HTML etc.)</p>
+<p>If you use <a href="https://grails.apache.org/docs/4.0.0/ref/Controllers/response.html"><code>respond</code></a> method introduced in Grails 2.3. The respond method tries to produce the most appropriate response for the requested content type (JSON, XML, HTML etc.)</p>
 </div>
 <div class="paragraph">
-<p>This plugin already provides <a href="https://grails.github.io/legacy-grails-doc/4.0.0/guide/theWebLayer.html#contentNegotiation">Mime Types</a> for Turbo Stream.</p>
+<p>This plugin already provides <a href="https://grails.apache.org/docs/4.0.0/guide/theWebLayer.html#contentNegotiation">Mime Types</a> for Turbo Stream.</p>
 </div>
 <div class="paragraph">
 <p>For example given the show action:</p>
@@ -227,7 +227,7 @@ so you can add <code>stimulus.js</code> to the <code>app/assets/application.js</
 </table>
 
 <div id="footer">
-    Copyright &copy; 2024-2025 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
+    Copyright &copy; 2024-2026 Michael Yan. The content is licensed under a Creative Commons Attribution 4.0 International (CC BY SA 4.0) license.
     
 </div>
 
