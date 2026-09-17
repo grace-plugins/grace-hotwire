@@ -46,7 +46,6 @@ img {
     font-weight: normal;
     margin-top: 0;
     margin-bottom: 0;
-
 }
 
 #content p {
@@ -55,7 +54,8 @@ img {
     padding-bottom: 5px;
     text-align: center;
     color: #222;
-    font-size: 15px;
+    font-size: 18px;
+    font-weight: 300;
 }
 
 .centered {
@@ -81,6 +81,8 @@ img {
 #controllers ul {
     padding-left: 20px;
     margin: 10px 0;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .footer img {
@@ -196,14 +198,14 @@ a.navbar-brand {
     display: block;
     padding: 0.25em 0.7em;
     text-decoration: none;
-    -moz-border-radius: 0.3em;
-    -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
 }
 
+.navbar .navbar-nav .nav-link:focus-visible {
+    box-shadow: none;
+}
+
 .navbar li.dropdown-item a {
-    -webkit-border-radius: 0;
-    -moz-border-radius: 0;
     border-radius: 0;
 }
 
@@ -227,8 +229,6 @@ a.navbar-brand {
     display: block;
     padding: 0.25em 0.7em;
     text-decoration: none;
-    -moz-border-radius: 0.3em;
-    -webkit-border-radius: 0.3em;
     border-radius: 0.3em;
 }
 
@@ -325,8 +325,6 @@ input:focus, select:focus, textarea:focus {
     background-color: #ffffff;
     border: 1px solid #eeeeee;
     outline: 0;
-    -moz-box-shadow: 0 0 0.5em #ffffff;
-    -webkit-box-shadow: 0 0 0.5em #ffffff;
     box-shadow: 0 0 0.5em #ffffff;
 }
 
@@ -411,6 +409,47 @@ input:invalid:focus, select:invalid:focus, textarea:invalid:focus {
     box-shadow: 0 0 0.5em #ffaaaa;
 }
 
+/* PAGINATION */
+.pagination a,
+.pagination .currentStep {
+    position: relative;
+    display: block;
+    padding: var(--bs-pagination-padding-y) var(--bs-pagination-padding-x);
+    font-size: var(--bs-pagination-font-size);
+    color: var(--bs-pagination-color);
+    text-decoration: none;
+    background-color: var(--bs-pagination-bg);
+    border: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+    border-right: none;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.pagination a:focus,
+.pagination .currentStep {
+    z-index: 3;
+    color: var(--bs-pagination-active-color);
+    background-color: var(--bs-pagination-active-bg);
+    border-color: var(--bs-pagination-active-border-color);
+}
+
+.pagination a:hover {
+    z-index: 2;
+    color: var(--bs-pagination-hover-color);
+    background-color: var(--bs-pagination-hover-bg);
+    border-color: var(--bs-pagination-hover-border-color);
+}
+
+.pagination .prevLink {
+    margin-left: calc(var(--bs-border-width) * -1);
+    border-top-left-radius: var(--bs-pagination-border-radius);
+    border-bottom-left-radius: var(--bs-pagination-border-radius);
+}
+.pagination .nextLink {
+    border-top-right-radius: var(--bs-pagination-border-radius);
+    border-bottom-right-radius: var(--bs-pagination-border-radius);
+    border-right: var(--bs-pagination-border-width) solid var(--bs-pagination-border-color);
+}
+
 /* ACTION BUTTONS */
 
 .buttons {
@@ -477,8 +516,6 @@ th.sortable a::after {
     line-height: 1;
     vertical-align: -.15em;
     margin-left: .5em;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 th.asc a::after {
