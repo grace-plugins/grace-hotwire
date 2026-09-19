@@ -1,33 +1,15 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta name="layout" content="main" />
-        <g:set var="entityName" value="${message(code: 'contact.label', default: 'Contact')}" />
-        <title><g:message code="default.create.label" args="[entityName]" /></title>
-    </head>
-    <body>
-    <div id="content" role="main">
-        <div class="container">
-            <section class="row">
-                <a href="#create-contact" class="skip" tabindex="-1"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-                <div class="col-12" role="navigation">
-                    <ul class="nav nav-pills">
-                        <li class="nav-item">
-                            <a class="nav-link" href="${createLink(uri: '/')}">
-                                <i class="bi bi-house-fill"></i><g:message code="default.home.label"/>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <g:link class="nav-link" action="index">
-                                <i class="bi bi-journals"></i><g:message code="default.list.label" args="[entityName]" />
-                            </g:link>
-                        </li>
-                    </ul>
+<g:set var="entityName" value="${message(code: 'contact.label', default: 'Contact')}" />
+
+<turbo-frame id="createContact">
+<g:form resource="${this.contact}" method="POST">
+    <div class="modal fade" id="contactModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title fs-5" id="contactModalLabel"><g:message code="default.create.label" args="[entityName]" /></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-            </section>
-            <section class="row">
-                <div id="create-contact" class="col-12 scaffold scaffold-create" role="main">
-                    <h1><g:message code="default.create.label" args="[entityName]" /></h1>
+                <div class="modal-body">
                     <g:if test="${flash.message}">
                     <div class="alert alert-success" role="status"><i class="bi bi-info-circle">${flash.message}</div>
                     </g:if>
@@ -42,20 +24,20 @@
                         </ul>
                     </div>
                     </g:hasErrors>
-                    <g:form resource="${this.contact}" method="POST">
-                        <fieldset class="form">
-                            <f:all bean="contact"/>
-                        </fieldset>
-                        <fieldset class="buttons offset-3">
-                            <button name="create" class="btn btn-primary">
-                                <i class="bi bi-journal-plus"></i>
-                                <g:message code="default.button.create.label" default="Create" />
-                            </button>
-                        </fieldset>
-                    </g:form>
+                    
+                    <fieldset class="form">
+                        <f:all bean="contact"/>
+                    </fieldset>
                 </div>
-            </section>
+                <div class="modal-footer">
+                    <button name="create" class="btn btn-primary">
+                        <i class="bi bi-journal-plus"></i>
+                        <g:message code="default.button.create.label" default="Create" />
+                    </button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
         </div>
     </div>
-    </body>
-</html>
+</g:form>
+</turbo-frame>

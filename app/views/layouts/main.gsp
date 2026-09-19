@@ -11,6 +11,9 @@
 
     <asset:stylesheet src="application.css"/>
 
+    <asset:javascript type="module" src="stimulus.js"/>
+    <asset:javascript type="module" src="turbo.es2017-umd.js"/>
+
     <link id="bootswatch-style" rel="stylesheet" href=""/>
 
     <g:set var="layoutName" value="main"/>

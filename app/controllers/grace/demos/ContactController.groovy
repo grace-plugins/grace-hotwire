@@ -9,7 +9,10 @@ class ContactController {
 
     static allowedMethods = [save: "POST", update: "PUT", delete: "DELETE"]
 
-    def index(Integer max) {
+    def index() {
+    }
+
+    def list(Integer max) {
         params.max = Math.min(max ?: 10, 100)
         respond contactService.list(params), model:[contactCount: contactService.count()]
     }
@@ -38,7 +41,7 @@ class ContactController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.created.message', args: [message(code: 'contact.label', default: 'Contact'), contact.id])
-                redirect contact
+                redirect action: "index"
             }
             '*' { respond contact, [status: CREATED] }
         }
@@ -64,7 +67,7 @@ class ContactController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.updated.message', args: [message(code: 'contact.label', default: 'Contact'), contact.id])
-                redirect contact
+                redirect action: "index"
             }
             '*'{ respond contact, [status: OK] }
         }
@@ -81,7 +84,7 @@ class ContactController {
         request.withFormat {
             form multipartForm {
                 flash.message = message(code: 'default.deleted.message', args: [message(code: 'contact.label', default: 'Contact'), id])
-                redirect action:"index", method:"GET"
+                redirect action: "list"
             }
             '*'{ render status: NO_CONTENT }
         }

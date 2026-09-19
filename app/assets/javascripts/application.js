@@ -8,3 +8,13 @@
 //= require jquery.min
 //= require bootstrap.bundle
 //= require_self
+
+document.addEventListener("turbo:frame-load", (event) => {
+    // Bootstrap modal will show itself when it’s inserted in the DOM as a Turbo Frame
+    const frameId = event.target.id;
+    const modalElement = document.querySelector("#" + frameId + " .modal");
+    if (modalElement) {
+        const modalInstance = new bootstrap.Modal(modalElement);
+        modalInstance.show();
+    }
+});
