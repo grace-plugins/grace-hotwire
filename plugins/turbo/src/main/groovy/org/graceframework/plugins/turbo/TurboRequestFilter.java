@@ -41,6 +41,7 @@ import static org.graceframework.plugins.turbo.HttpServletRequestExtension.isTur
 public class TurboRequestFilter extends OncePerRequestFilter {
 
     private static final String TURBO_FRAME_LAYOUT = "turbo/frame";
+    private static final String TURBO_STREAM_LAYOUT = "turbo/stream";
 
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
@@ -59,6 +60,7 @@ public class TurboRequestFilter extends OncePerRequestFilter {
             request.setAttribute(GrailsApplicationAttributes.RESPONSE_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
             request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPE, TurboMimeType.TURBO_STREAM);
             request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPES, new MimeType[] { TurboMimeType.TURBO_STREAM, MimeType.HTML });
+            request.setAttribute(GrailsLayoutDecoratorMapper.LAYOUT_ATTRIBUTE, TURBO_STREAM_LAYOUT);
         }
 
         filterChain.doFilter(request, response);
