@@ -29,6 +29,7 @@ dependencies {
     compileOnly "org.springframework.boot:spring-boot-autoconfigure"
     compileOnly "javax.servlet:javax.servlet-api"
     compileOnly "org.graceframework:grace-core"
+    compileOnly "org.graceframework:grace-plugin-mimetypes"
     compileOnly "org.graceframework:grace-web-common"
     compileOnly "org.graceframework:grace-web-gsp"
     compileOnly "org.graceframework:grace-web-sitemesh"
