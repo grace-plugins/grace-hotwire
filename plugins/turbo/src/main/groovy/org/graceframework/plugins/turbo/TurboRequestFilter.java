@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 the original author or authors.
+ * Copyright 2024-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -23,8 +23,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import grails.web.mime.MimeType;
 import org.grails.web.sitemesh.GrailsLayoutDecoratorMapper;
 import org.grails.web.util.GrailsApplicationAttributes;
+
+import static org.graceframework.plugins.turbo.HttpServletRequestExtension.isTurboFrame;
+import static org.graceframework.plugins.turbo.HttpServletRequestExtension.isTurboRequest;
+import static org.graceframework.plugins.turbo.HttpServletRequestExtension.isTurboStream;
 
 /**
  * {@link OncePerRequestFilter} to check current request whether from Turbo Stream or not,
@@ -41,15 +46,19 @@ public class TurboRequestFilter extends OncePerRequestFilter {
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
-        if (HttpServletRequestExtension.isTurboStream(request)) {
+        if (isTurboFrame(request)) {
+            request.setAttribute(GrailsApplicationAttributes.CONTENT_FORMAT, TurboMimeType.TURBO_FRAME_FORMAT);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_FORMAT, TurboMimeType.TURBO_FRAME_FORMAT);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPE, TurboMimeType.TURBO_FRAME);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPES, new MimeType[] { TurboMimeType.TURBO_FRAME, MimeType.HTML });
+            request.setAttribute(GrailsLayoutDecoratorMapper.LAYOUT_ATTRIBUTE, TURBO_FRAME_LAYOUT);
+        }
+
+        if (isTurboStream(request)) {
             request.setAttribute(GrailsApplicationAttributes.CONTENT_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
             request.setAttribute(GrailsApplicationAttributes.RESPONSE_FORMAT, TurboMimeType.TURBO_STREAM_FORMAT);
             request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPE, TurboMimeType.TURBO_STREAM);
-            response.setContentType(TurboMimeType.TURBO_STREAM.getName());
-        }
-
-        if (HttpServletRequestExtension.isTurboFrame(request)) {
-            request.setAttribute(GrailsLayoutDecoratorMapper.LAYOUT_ATTRIBUTE, TURBO_FRAME_LAYOUT);
+            request.setAttribute(GrailsApplicationAttributes.RESPONSE_MIME_TYPES, new MimeType[] { TurboMimeType.TURBO_STREAM, MimeType.HTML });
         }
 
         filterChain.doFilter(request, response);
@@ -57,7 +66,7 @@ public class TurboRequestFilter extends OncePerRequestFilter {
 
     @Override
     protected boolean shouldNotFilter(HttpServletRequest request) {
-        return !HttpServletRequestExtension.isTurboRequest(request);
+        return !isTurboRequest(request);
     }
 
 }
