@@ -1,6 +1,11 @@
 <tr id="contact_${bean.id}">
     <td class="text-center">
-        <f:display bean="${bean}" property="id" />
+        <g:link method="GET" 
+            controller="contact" 
+            action="show" 
+            id="${bean.id}" data-turbo="false">
+            <f:display bean="${bean}" property="id" />
+        </g:link>
     </td>
     <td><f:display bean="${bean}" property="firstName" /></td>
     <td><f:display bean="${bean}" property="lastName" /></td>
