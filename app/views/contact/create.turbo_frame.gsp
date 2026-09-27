@@ -26,7 +26,7 @@
                     </g:hasErrors>
                     
                     <fieldset class="form">
-                        <f:all bean="contact"/>
+                        <f:all bean="contact" except="notes"/>
                     </fieldset>
                 </div>
                 <div class="modal-footer">
