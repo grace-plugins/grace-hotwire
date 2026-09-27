@@ -36,20 +36,50 @@
                     <g:if test="${flash.message}">
                     <div class="alert alert-success" role="status"><i class="bi bi-info-circle"></i>${flash.message}</div>
                     </g:if>
-                    <f:display bean="contact" />
-                    <g:form resource="${this.contact}" method="DELETE">
-                        <fieldset class="buttons offset-3">
-                            <g:link class="btn btn-primary" action="edit" resource="${this.contact}">
-                                <i class="bi bi-journal-text"></i><g:message code="default.button.edit.label" default="Edit" />
-                            </g:link>
-                            <button class="btn btn-danger" onclick="return confirm('${message(code: 'default.button.delete.confirm.message', default: 'Are you sure?')}');">
-                                <i class="bi bi-journal-x"></i><g:message code="default.button.delete.label" default="Delete" />
-                            </button>
-                        </fieldset>
-                    </g:form>
+                    <f:display bean="contact" except="id, notes" />
+                </div>
+            </section>
+            <section class="row">
+                <div id="list-note" class="col-12 scaffold scaffold-list">
+                    <div id="buttons" class="float-end mb-2">
+                        <g:link controller="note" action="create" method="GET" params="[contactId: params.id]" class="btn btn-outline-primary" data-turbo-frame="createNote">
+                            <i class="bi bi-journal-plus"></i>
+                            Add Note
+                        </g:link>
+                    </div>
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <g:sortableColumn property="id" titleKey="note.id.label" class="text-center" />
+                                <th><g:message code="note.body.label" /></th>
+                                <th width="15%" class="text-center">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <g:each var="note" in="${contact.notes}">
+                            <tr>
+                                <td class="text-center"><f:display bean="${note}" property="id" /></td>
+                                <td><f:display bean="${note}" property="body" /></td>
+                                <td>
+                                    <g:link class="btn btn-link"
+                                        method="delete"
+                                        controller="note"
+                                        action="delete"
+                                        params="[contactId: contact.id, noteId: note.id]"
+                                        data-turbo-method="delete"
+                                        data-turbo-confirm="Are you sure you want to delete this note?">
+                                        Delete
+                                    </g:link>
+                                </td>
+                            </tr>
+                            </g:each>
+                        </tbody>
+                    </table>
                 </div>
             </section>
         </div>
     </div>
+    <turbo-frame id="createNote" target="_top">
+    </turbo-frame>
     </body>
 </html>
