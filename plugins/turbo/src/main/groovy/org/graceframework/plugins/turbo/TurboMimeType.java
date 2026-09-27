@@ -1,5 +1,5 @@
 /*
- * Copyright 2024 the original author or authors.
+ * Copyright 2024-2026 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,6 +27,12 @@ public class TurboMimeType {
 
     public static final String TURBO_STREAM_FORMAT = "turbo_stream";
 
+    public static final String TURBO_FRAME_FORMAT = "turbo_frame";
+
     public static final MimeType TURBO_STREAM = new MimeType("text/vnd.turbo-stream.html", "turbo_stream");
+
+    public static final MimeType TURBO_FRAME = new MimeType("text/html", "turbo_frame");
+
+    public static final MimeType[] TURBO_MIME_TYPES = new MimeType[] { TurboMimeType.TURBO_FRAME, TurboMimeType.TURBO_STREAM };
 
 }
